@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mzansi Zone</title>
+
+  <!-- Link external CSS files -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extras.css">
+
+  <!-- Link external JS file -->
+  <script src="js/script.js" defer></script>
+
+  <style>
+    /* ===== Inline Styles for Modals and Product Cards ===== */
+    #cart-container, #qty-modal { 
+      display: none; 
+      position: fixed; 
+      top: 50%; left: 50%; 
+      transform: translate(-50%, -50%); 
+      background: #fff; 
+      padding: 20px; 
+      border: 1px solid #ccc; 
+      z-index: 100; 
+      max-width: 300px; 
+      width: 90%; 
+    }
+
+    /* Shopping cart icon fixed to top-right corner */
+    #cart-icon { 
+      position: fixed; 
+      top: 20px; 
+      right: 20px; 
+      cursor: pointer; 
+      font-size: 30px; 
+    }
+
+    /* Quantity modal layout */
+    .qty-box { text-align: center; }
+    .qty-controls { 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 10px; 
+      margin: 10px 0; 
+    }
+
+    /* Product listing layout */
+    .product-swipe-container { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 20px; 
+      justify-content: center; 
+      margin-top: 20px; 
+    }
+
+    /* Product card design */
+    .product-card { 
+      border: 1px solid #ddd; 
+      padding: 10px; 
+      text-align: center; 
+      width: 220px; 
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <h1><img src="images/mzansi_logo.png" alt="Mzansi Zone Logo" class="logo-header"></h1>
+    <nav>
+      <!-- Main navigation menu -->
+      <ul>
+        <!-- Links to all pages, "active" highlights the current one -->
+        <li><a href="1-home.html">Home</a></li>
+        <li><a href="2-about.html">About Us</a></li>
+        <li><a href="3-services.html">Services</a></li>
+        <li><a href="4-products.html" class="active">Products</a></li>
+        <li><a href="5-enquiry.html">Enquiry</a></li>
+        <li><a href="6-contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+    <h2>Our Products</h2>
+
+    <!-- Shopping Cart Icon -->
+    <div id="cart-icon">🛒</div>
+
+    <!-- Cart Modal (shows cart items, total & actions) -->
+    <div id="cart-container">
+      <h3>Your Cart</h3>
+      <ul id="cart-items"></ul>
+      <p>Total Items: <span id="total-items">0</span></p>
+      <p>Total Price: R<span id="total-price">0</span></p>
+      <button id="checkout-btn">Checkout</button>
+      <button id="clear-cart-btn">Clear Cart</button>
+    </div>
+
+    <!-- Quantity Modal (appears when user adds product to cart) -->
+    <div id="qty-modal">
+      <div class="qty-box">
+        <h4 id="qty-product-name"></h4>
+        <div class="qty-controls">
+          <button id="minus">-</button>
+          <span id="qty-number">1</span>
+          <button id="plus">+</button>
+        </div>
+        <div>
+          <button id="qty-done">Done</button>
+          <button id="qty-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CATEGORY NAVIGATION ===== -->
+    <div class="category-nav">
+      <!-- Links filter/highlight product sections -->
+      <a href="#all" data-category="all" class="active">All</a>
+      <a href="#fragrances" data-category="fragrances">Fragrances</a>
+      <a href="#hair" data-category="hair">Hair Products & Accessories</a>
+      <a href="#beauty" data-category="beauty">Nails & Beauty Products</a>
+      <a href="#electronics" data-category="electronics">Electronics Gadgets & Watches</a>
+      <a href="#kitchen" data-category="kitchen">Kitchen Stationary</a>
+      <a href="#chains" data-category="chains">Chains & Necklaces</a>
+      <a href="#toys" data-category="toys">Toys & Party Packs</a>
+      <a href="#clothing" data-category="clothing">Clothing & Other Accessories</a>
+      <a href="#toiletry" data-category="toiletry">Toiletry</a>
+    </div>
+
+    <!-- ===== PRODUCT SECTIONS ===== -->
+    <!-- Each section groups related products -->
+  <section id="fragrances" class="product-section fragrances">
+    <h3>Fragrances</h3>
+    <div class="product-swipe-container">
+  <!-- Each product card contains image, name, description & "Add to Cart" -->
+      <div class="product-card" data-name="YARA (Arabic Fragerence)" data-price="250">
+        <img src="images/yara.jpg" alt="YARA (Arabic Fragerence)">
+        <h4>YARA (Arabic Fragerence)</h4>
+        <p>R250 - One of the best scent you can find within a perfume.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="KHAMRAH (Arabic Fragerence)" data-price="250">
+        <img src="images/arabic_fragrance.jpg" alt="KHAMRAH (Arabic Fragerence)">
+        <h4>KHAMRAH (Arabic Fragerence)</h4>
+        <p>R250 - A good perfume you can get.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="ASAD (Arabic Fragerence)" data-price="250">
+        <img src="images/asad.jpg" alt="ASAD (Arabic Fragerence)">
+        <h4>ASAD (Arabic Fragerence)</h4>
+        <p>R250 - One of the best scent you can find within a perfume.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="BURPHRISE (Arabic Fragerence)" data-price="250">
+        <img src="images/burphrise.jpg" alt="BURPHRISE (Arabic Fragerence)">
+        <h4>BURPHRISE (Arabic Fragerence)</h4>
+        <p>R250 - A good perfume you can get.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Follow Me (MUSK)" data-price="20">
+        <img src="images/follow_me_perfume.jpg" alt="Follow Me (MUSK)">
+        <h4>Follow Me (MUSK)</h4>
+        <p>R20 - Affordable perfume you can trust.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="YARA (Arabic Fragerence)" data-price="250">
+        <img src="images/yara2.jpg" alt="YARA (Arabic Fragerence)">
+        <h4>YARA (Arabic Fragerence)</h4>
+        <p>R250 - A good perfume you can get.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Barcat (Mason Eau De Parfum)" data-price="250">
+        <img src="images/barcat_perfume_set.jpg" alt="Barcat (Mason Eau De Parfum)">
+        <h4>Barcat (Mason Eau De Parfum)</h4>
+        <p>R250 - BARCAT perfume 4pcs set.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="hair" class="product-section hair">
+    <h3>Hair Products & Accessories</h3>
+    <div class="product-swipe-container">
+      <div class="product-card" data-name="Hair Food (Black Chic)" data-price="25">
+        <img src="images/black_chic.jpg" alt="Hair Food Black Chic">
+        <h4>Hair Food (Black Chic)</h4>
+        <p>R25 - Nourishing and natural hair food.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Hair Clips data-price="45">
+        <img src="images/hair_clips.jpg" alt="Hair Clips">
+        <h4>Hair Clips</h4>
+        <p>R45 - Safe clips for kids and their hair.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+        <div class="product-card" data-name="Perfect Choice Gel (Styling Gel)" data-price="50">
+        <img src="images/styling_gel.jpg" alt="Perfect Choice Gel (Styling Gel)">
+        <h4>Perfect Choice Gel (Styling Gel)</h4>
+        <p>R50 - Moisturing therapy.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Dark Lovely Relaxer" data-price="55">
+        <img src="images/dark_lovely_relaxer.jpg" alt="Dark Lovely Relaxer">
+        <h4>Dark Lovely Relaxer</h4>
+        <p>R55 - Precise Diamon, Dark Lovely Super Relaxer.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Hair Bonding Glue" data-price="10">
+        <img src="images/hair_bonding_glue.jpg" alt="Hair Bonding Glue">
+        <h4>Hair Bonding Glue</h4>
+        <p>R10 - Hair bonding glue.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Dabur AMILA Hair Oil" data-price="50">
+        <img src="images/amila_hair_oil.jpg" alt="Dabur AMILA Hair Oil">
+        <h4>Dabur AMILA Hair Oil</h4>
+        <p>R50 - Hair oil.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Glamour Lace Glue" data-price="40">
+        <img src="images/glamour_lace_glue.jpg" alt="Glamour Lace Glue">
+        <h4>Glamour Lace Glue</h4>
+        <p>R40 - The best of the best lace glue.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="beauty" class="product-section beauty">
+    <h3>Nails & Beauty Products</h3>
+    <div class="product-swipe-container">
+      <div class="product-card" data-name="Gel Polish" data-price="20">
+        <img src="images/gel_polish.jpg" alt="Gel Polish">
+        <h4>Gel Polish</h4>
+        <p>R20 - Long-lasting, chip-free gel manicure.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Dr Rashel Set" data-price="250">
+        <img src="images/dr_rashel_set.jpg" alt="Dr Rashel Care Set">
+        <h4>Dr Rashel Care Set</h4>
+        <p>R250 - Complete skin care collection.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Acrylic Powder" data-price="20">
+        <img src="images/acrylic_powder.jpg" alt="Acrylic Powder">
+        <h4>Acrylic Powder</h4>
+        <p>R20 - Benefit if nail powder is that it lasts longer than any other applications.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Dr Davey Body Oil" data-price="60">
+        <img src="images/body_oil.jpg" alt="Dr Davey Body Oil">
+        <h4>Dr Davey Body Oil</h4>
+        <p>R60 - Nourishes skin, improves collagen, anti-aging.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Gentle Magic (The Skincare Serum)" data-price="20">
+        <img src="images/gentle_magic_serum.jpg" alt="Gentle Magic (The Skincare Serum)">
+        <h4>Gentle Magic (The Skincare Serum)</h4>
+        <p>R20 - Gentle Magic The Skincare Product gently disinfects skin to protect it from spot-causing germs & bacteria.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Portia M Skin Serum" data-price="160">
+        <img src="images/portia_m_serum.jpg" alt="Portia M Skin Serum">
+        <h4>Portia M Skin Serum</h4>
+        <p>R160 - Portia M Marula Skin Serum Oil</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Bramley Tissue Oil" data-price="30">
+        <img src="images/bramley_tissue_oil.jpg" alt="Bramley Tissue Oil">
+        <h4>Bramley Tissue Oil</h4>
+        <p>R30 - It helps make brittle nails stronger and nourishes your nails, you can put some tissue oil on your lips to soothe, nourish and hydrate them, adding slight lip gloss effect. Perfect for the winter months</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Portia M Face Cream" data-price="120">
+        <img src="images/portia_m.jpg" alt="Portia M Face Cream">
+        <h4>Portia M Face Cream</h4>
+        <p>R120 - Portia M Pomegrante Anti-Aging Cream</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Gentle Magic (The Skincare Cream)" data-price="20">
+        <img src="images/gentle_magic_cream.jpg" alt="Gentle Magic (The Skincare Cream)">
+        <h4>Gentle Magic (The Skincare Cream)</h4>
+        <p>R20 - Gentle Magic The Skincare Product gently disinfects skin to protect it from spot-causing germs & bacteria.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="DHT Blocker Set" data-price="100">
+        <img src="images/dht_blocker_set.jpg" alt="DHT Blocker Set">
+        <h4>DHT Blocker Set</h4>
+        <p>R100 - Package deal a whole care set right here for you.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="electronics" class="product-section electronics">
+    <h3>Electronics Gadgets & Watches</h3>
+    <div class="product-swipe-container">
+      <div class="product-card" data-name="3-in-1 Wireless iPhone Charger" data-price="180">
+        <img src="images/wireless_charger.jpg" alt="3-in-1 Wireless iPhone Charger">
+        <h4>3-in-1 Wireless iPhone Charger</h4>
+        <p>R180 - Charge phone, watch & AirPods simultaneously.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Yuzex Tactical Gear (Watch)" data-price="300">
+        <img src="images/yuzex_watch.jpg" alt="Yuzex Tactical Gear (Watch)">
+        <h4>Yuzex Tactical Gear (Watch)</h4>
+        <p>R300 - Survival tatical watch, with thermometer compass and fire starter.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="iPhone Battery Pack" data-price="250">
+        <img src="images/iphone_battery_pack.jpg" alt="iPhone Battery Pack">
+        <h4>iPhone Battery Pack</h4>
+        <p>R250 - Wireless powerbank.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="kitchen" class="product-section kitchen">
+    <h3>Kitchen Stationary</h3>
+    <div class="product-swipe-container">
+      <div class="product-card" data-name="Kitchen Cloths 2pcs" data-price="45">
+        <img src="images/kitchen_cloths.jpg" alt="Kitchen Cloths 2pcs">
+        <h4>Kitchen Cloths 2pcs</h4>
+        <p>R45 - Best dishwashing very safe and reusable.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Bamboo Lids" data-price="60">
+        <img src="images/bamboo_lids.jpg" alt="Bamboo Lids">
+        <h4>Bamboo Lids</h4>
+        <p>R60 - Safe and reliable materials, BPA & PVC free, dishwasher safe and reusable.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Kitchen Cloths 3pcs" data-price="60">
+        <img src="images/kitchen_rags.jpg" alt="Kitchen Cloths 3pcs">
+        <h4>Kitchen Cloths 3pcs</h4>
+        <p>R60 - Best dishwashing very safe and reusable.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Cutting Board" data-price="25">
+        <img src="images/cutting_board.jpg" alt="Cutting Board">
+        <h4>Cutting Board</h4>
+        <p>R25 - Best of use to cut veggies, fruits, meat very reliable.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Kitchen Knives Set" data-price="55">
+        <img src="images/knives.jpg" alt="Kitchen Knives Set">
+        <h4>Kitchen Knives Set</h4>
+        <p>R55 - A set of sharp quality knives you can get.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Stanley Cup (Small)" data-price="60">
+        <img src="images/stanley_small.jpg" alt="Stanley Cup (Small)">
+        <h4>Stanley Cup (Small)</h4>
+        <p>R60 - Get your best multi task flask right here with Stanley.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Stanley Cup (Large)" data-price="90">
+        <img src="images/stanley_large.jpg" alt="Stanley Cup (Large)">
+        <h4>Stanley Cup (Large)</h4>
+        <p>R90 - Get your best multi task flask right here with Stanley.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Stanley Cup (Designed)" data-price="160">
+        <img src="images/stanley_style.jpg" alt="Stanley Cup (Designed)">
+        <h4>Stanley Cup (Designed)</h4>
+        <p>R160 - Get your best multi task flask right here with Stanley.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="chains" class="product-section chains">
+    <h3>Chains & Necklaces</h3>
+    <div class="product-swipe-container">
+    <div class="product-card" data-name="Gold Chain" data-price="50"> 
+      <img src="images/gold_chain.jpg" alt="Gold Chain">
+      <h4>Gold Chain</h4>
+      <p>R50 - Quality and strong.</p>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Heart Necklace" data-price="60"> 
+      <img src="images/heart_necklace.jpg" alt="Heart Necklace">
+      <h4>Heart Necklace</h4>
+      <p>R60 - Beauty at its neck perfect for daily wear.</p>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Military Tag & Chain" data-price="80"> 
+      <img src="images/military_tag.jpg" alt="Military Tag & Chain">
+      <h4>Military Tag & Chain</h4>
+      <p>R80 - Quality and strong..</p>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Military Tag Pendant" data-price="45"> 
+      <img src="images/tag_pendant.jpg" alt="Military Tag Pendant">
+      <h4>Military Tag Pendant</h4>
+      <p>R45 - Quality and strong.</p>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Silver Chain" data-price="50"> 
+      <img src="images/silver_chain.jpg" alt="Silver Chain">
+      <h4>Silver Chain</h4>
+      <p>R50 - Quality and strong..</p>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Male Pendant" data-price="90"> 
+      <img src="images/male_pendant.jpg" alt="Male Pendant">
+      <h4>Male Pendant</h4>
+      <p>R90 - Look fresh for your day.</p>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+    <div class="product-card" data-name="Heart Pendant" data-price="90"> 
+      <img src="images/heart_pendant.jpg" alt="Heart Pendant">
+      <h4>Heart Pendant</h4>
+      <p>R90 - Beauty, make-up & necklace.</p>
+      <button class="add-cart-btn">Add to Cart</button>
+    </div>
+   </div>
+  </section> 
+
+    <section id="toys" class="product-section toys">
+    <h3>Toys & Party Packs</h3>
+    <div class="product-swipe-container">
+      <div class="product-card" data-name="Balloons" data-price="20">
+        <img src="images/balloons.jpg" alt="Balloons">
+        <h4>Balloons</h4>
+        <p>R20 - Birthday balloons for you.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Happy Birthday Balloons" data-price="50">
+        <img src="images/birthday_ballons.jpg" alt="Happy Birthday Balloons">
+        <h4>Happy Birthday Balloons</h4>
+        <p>R50 - Designed birthday balloons ready for you.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Gold Letter Balloons" data-price="30">
+        <img src="images/gold_letter_ballons.jpg" alt="Gold Letter Balloons">
+        <h4>Gold Letter Balloons</h4>
+        <p>R30 - Find your name and make the party better with gold letters, all sizes are found.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Silver Letter Balloons" data-price="30">
+        <img src="images/silver_letter_ballons.jpg" alt="Silver Letter Balloons">
+        <h4>Silver Letter Balloons</h4>
+        <p>R30 - Find your name and make the party better with silver letters, all sizes are found.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Paper Party Bag" data-price="25">
+        <img src="images/party_gift_bag.jpg" alt="Paper Party Bag">
+        <h4>Paper Party Bag</h4>
+        <p>R25 - Safest and cheapest party bag.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Gift Bag" data-price="50">
+        <img src="images/gift_bags.jpg" alt="Gift Bag">
+        <h4>Gift</h4>
+        <p>R50 - All sizes for party/gift bag.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Smart Book" data-price="160">
+        <img src="images/smart_toys.jpg" alt="Smart Book">
+        <h4>Smart Book</h4>
+        <p>R160 - Good for toddlers to test their fast and thinking strength.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Kiddies Sort Puzzle" data-price="80">
+        <img src="images/kids_toys.jpg" alt="Kiddies Sort Puzzle">
+        <h4>Kiddies Sort Puzzle</h4>
+        <p>R80 - Good for toddlers to test their fast and thinking strength.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Kiddies Veggies Toy Store" data-price="120">
+        <img src="images/toys.jpg" alt="Kiddies Veggies Toy Store">
+        <h4>Kiddies Veggies Toy Store</h4>
+        <p>R120 - Good for toddlers to test their fast and thinking strength.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="clothing" class="product-section clothing">
+    <h3>Clothing & Other Accessories</h3>
+    <div class="product-swipe-container">
+      <div class="product-card" data-name="Bucket Hat" data-price="40">
+        <img src="images/bucket_hat.jpg" alt="Bucket Hat">
+        <h4>Bucket Hat</h4>
+        <p>R40 - Soft and comfortable great for sunny days.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Ambassador Underwear" data-price="40">
+        <img src="images/ambassador_underwear.jpg" alt="Ambassador Underwear">
+        <h4>Ambassador Underwear</h4>
+        <p>R40 - 100% cotton, soft and breathable.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Bucket Hat w String" data-price="50">
+        <img src="images/bucket_hat_string.jpg" alt="Bucket Hat w String">
+        <h4>Bucket Hat w String</h4>
+        <p>R50 - Soft and comfortable great for sunny days.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <!-- Add more clothing products here -->
+    </div>
+  </section>
+
+  <section id="toiletry" class="product-section toiletry">
+    <h3>Toiletry</h3>
+    <div class="product-swipe-container">
+      <div class="product-card" data-name="Oh So Heavenly Classic Care" data-price="65">
+        <img src="images/oh_so_heavenly_lotion.jpg" alt="Oh So Heavenly Classic Care">
+        <h4>Oh So Heavenly Classic Care</h4>
+        <p>R65 - Nourishes skin, best scent, anti-aging.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Gentle Magic (The Skincare Soap)" data-price="20">
+        <img src="images/gentle_magic_soap.jpg" alt="Gentle Magic (The Skincare Soap)">
+        <h4>Gentle Magic (The Skincare Soap)</h4>
+        <p>R20 - Gentle Magic The Skincare Product gently disinfects skin to protect it from spot-causing germs & bacteria.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Portia M Body Lotion" data-price="60">
+        <img src="images/portia_m_serum.jpg" alt="Portia M Body Lotion">
+        <h4>Portia M Body Lotion</h4>
+        <p>R60 - Portia M Marula Skin Oil Body Lotion</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Dr Rashel Shower Gel" data-price="75">
+        <img src="images/dr_rashel_shower_gel.jpg" alt="Dr Rashel Shower Gel">
+        <h4>Dr Rashel Shower Gel</h4>
+        <p>R75 - Its silky and nourish.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Gentle Magic (The Skincare Lotion)" data-price="20">
+        <img src="images/gentle_magic_lotion.jpg" alt="Gentle Magic (The Skincare Lotion)">
+        <h4>Gentle Magic (The Skincare Lotion)</h4>
+        <p>R20 - Gentle Magic The Skincare Product gently disinfects skin to protect it from spot-causing germs & bacteria.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Body Scrub" data-price="45">
+        <img src="images/body_scrub.jpg" alt="Body Scrub">
+        <h4>Body Scrub</h4>
+        <p>R45 - If all you use for your skin is a bar of soap and water, than it is time ti step up to give your body and face a special treatment it deserves.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Dr Rashel Essence Soap" data-price="45">
+        <img src="images/dr_rashel_soap.jpg" alt="Dr Rashel Essence Soap">
+        <h4>Dr Rashel Essence Soap</h4>
+        <p>R45 - Lighten dark spots, cleanse & nourish skin.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Fasmc Cosmetics (Shampoo Expert)" data-price="45">
+        <img src="images/fasmc_shampoo.jpg" alt="Fasmc Cosmetics (Shampoo Expert)">
+        <h4>Fasmc Cosmetics (Shampoo Expert)</h4>
+        <p>R45 - Argan & keratin shampoo.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+      <div class="product-card" data-name="Veerox Bubble Bath" data-price="50">
+        <img src="images/veerox.jpg" alt="Veerox Bubble Bath">
+        <h4>Veerox Bubble Bath</h4>
+        <p>R50 - Sweet, soft, amazing fresh feeling after a warm bath.</p>
+        <button class="add-cart-btn">Add to Cart</button>
+      </div>
+   </div>
+  </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>&copy; 2025 Mzansi Zone | All Rights Reserved</p>
+  </footer>
+
+  <!-- ===== SHOPPING CART LOGIC ===== -->
+  <script>
+    // Load cart data from localStorage (persistent cart between visits)
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Reference cart elements
+    const cartIcon = document.getElementById('cart-icon');
+    const cartContainer = document.getElementById('cart-container');
+    const cartItemsEl = document.getElementById('cart-items');
+    const totalItemsEl = document.getElementById('total-items');
+    const totalPriceEl = document.getElementById('total-price');
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+
+    // Reference quantity modal elements
+    const qtyModal = document.getElementById('qty-modal');
+    const qtyNumberEl = document.getElementById('qty-number');
+    const qtyProductNameEl = document.getElementById('qty-product-name');
+    let selectedProduct = null;
+    let selectedQty = 1;
+
+    // Function: Render cart items dynamically
+    function renderCart() {
+      cartItemsEl.innerHTML = '';  // Clear old cart
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      // Loop through cart items
+      cart.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} x ${item.qty} - R${item.price * item.qty}`;
+        cartItemsEl.appendChild(li);
+
+        totalItems += item.qty;
+        totalPrice += item.price * item.qty;
+      });
+
+      // Update totals
+      totalItemsEl.textContent = totalItems;
+      totalPriceEl.textContent = totalPrice;
+
+      // Save updated cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Initial render when page loads
+    renderCart();
+
+    // Toggle cart modal on icon click
+    cartIcon.addEventListener('click', () => {
+      cartContainer.style.display = cartContainer.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Add to Cart button click → open quantity modal
+    document.querySelectorAll('.add-cart-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const card = e.target.closest('.product-card');
+        selectedProduct = {
+          name: card.dataset.name,
+          price: parseFloat(card.dataset.price)
+        };
+        selectedQty = 1;
+        qtyNumberEl.textContent = selectedQty;
+        qtyProductNameEl.textContent = selectedProduct.name;
+        qtyModal.style.display = 'block';
+      });
+    });
+
+    // Quantity increase/decrease buttons
+    document.getElementById('plus').addEventListener('click', () => {
+      selectedQty++;
+      qtyNumberEl.textContent = selectedQty;
+    });
+    document.getElementById('minus').addEventListener('click', () => {
+      if (selectedQty > 1) selectedQty--;
+      qtyNumberEl.textContent = selectedQty;
+    });
+
+    // Confirm quantity → add to cart
+    document.getElementById('qty-done').addEventListener('click', () => {
+      const existing = cart.find(item => item.name === selectedProduct.name);
+      if (existing) existing.qty += selectedQty;
+      else cart.push({...selectedProduct, qty: selectedQty});
+      renderCart();
+      qtyModal.style.display = 'none';
+    });
+
+    // Cancel modal
+    document.getElementById('qty-cancel').addEventListener('click', () => {
+      qtyModal.style.display = 'none';
+    });
+
+    // Clear cart button
+    clearCartBtn.addEventListener('click', () => {
+      cart = [];
+      renderCart();
+    });
+  </script>
+
+  <!-- ===== CATEGORY NAVIGATION LOGIC ===== -->
+  <script>
+    // Highlight clicked category link
+    document.querySelectorAll('.category-nav a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.category-nav a').forEach(nav => nav.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Auto-highlight category link based on scroll position
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let scrollPos = window.scrollY + 150;
+      sections.forEach(sec => {
+        if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+          document.querySelectorAll('.category-nav a').forEach(nav => nav.classList.remove('active'));
+          document.querySelector(`.category-nav a[href="#${sec.id}"]`).classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

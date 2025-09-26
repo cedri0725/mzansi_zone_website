@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Sets character encoding for correct text display -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes site responsive -->
+  <title>Mzansi Zone</title> <!-- Browser tab title -->
+
+  <!-- Link to main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Link to additional styles -->
+  <link rel="stylesheet" href="css/extras.css">
+
+  <!-- Link to JavaScript file (deferred so it loads after HTML) -->
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+  <!-- ===== HEADER SECTION ===== -->
+  <header>
+    <!-- Website Logo -->
+    <h1>
+      <img src="images/mzansi_logo.png" alt="Mzansi Zone Logo" class="logo-header">
+    </h1>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <ul>
+        <!-- Links to all pages, "active" highlights the current one -->
+        <li><a href="1-home.html">Home</a></li>
+        <li><a href="2-about.html">About Us</a></li>
+        <li><a href="3-services.html">Services</a></li>
+        <li><a href="4-products.html">Products</a></li>
+        <li><a href="5-enquiry.html" class="active">Enquiry</a></li>
+        <li><a href="6-contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== MAIN CONTENT SECTION ===== -->
+  <main>
+    <h2>Enquiry Form</h2>
+
+    <!-- Enquiry Form -->
+    <!-- "action" is where form data would be sent (e.g. a server or email handler) -->
+    <!-- "method" specifies how data is sent (post = secure for sensitive data) -->
+    <form action="#" method="post" class="enquiry-form">
+
+      <!-- Name Field -->
+      <label for="name">Full Names & Surname:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <!-- Email Field -->
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <!-- Phone Number Field -->
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. 071 234 5678">
+
+      <!-- Product/Service Field -->
+      <label for="product">Product/Service Interested:</label>
+      <input type="text" id="product" name="product" placeholder="e.g. Hair Food, Gel Polish">
+
+      <!-- Message/Enquiry Field -->
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" placeholder="Write your enquiry here..."></textarea>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit">Submit Enquiry</button>
+    </form>
+  </main>
+
+  <!-- ===== FOOTER SECTION ===== -->
+  <footer>
+    <p>&copy; 2025 Mzansi Zone | All Rights Reserved</p>
+  </footer>
+</body>
+</html>

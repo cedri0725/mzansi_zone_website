@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mzansi Zone</title>
+
+  <!-- Main Styles (general design, layout, colors) -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Extra Styles (animations, effects, etc.) -->
+  <link rel="stylesheet" href="css/extras.css">
+
+  <!-- JavaScript (interactivity like cart, nav effects, etc.) -->
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- =======================
+       HEADER + NAVIGATION
+  ======================== -->
+  <header>
+    <!-- Website Logo -->
+    <h1>
+      <img src="images/mzansi_logo.png" alt="Mzansi Zone Logo" class="logo-header">
+    </h1>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <!-- Navigation links (active = highlights current page) -->
+        <li><a href="1-home.html" class="active">Home</a></li>
+        <li><a href="2-about.html">About Us</a></li>
+        <li><a href="3-services.html">Services</a></li>
+        <li><a href="4-products.html">Products</a></li>
+        <li><a href="5-enquiry.html">Enquiry</a></li>
+        <li><a href="6-contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- =======================
+       MAIN CONTENT
+  ======================== -->
+  <main>
+    <!-- Hero Section (introductory message) -->
+    <h2>Welcome to Mzansi Zone</h2>
+    <p>Your one-stop store for beauty, lifestyle, household goods, toys, and much more!</p>
+
+    <!-- =======================
+         EMBEDDED VIDEO SECTION
+    ======================== -->
+    <section class="home-video">
+      <h3>Check Out Our Latest Video</h3>
+      <div class="video-wrapper">
+        <!-- TikTok video embed -->
+        <blockquote 
+          class="tiktok-embed"
+          cite="https://www.tiktok.com/@mzansizone/video/7374920739339685125"
+          data-video-id="7374920739339685125"
+          style="max-width: 700px; margin: 0 auto;">
+          <section></section>
+        </blockquote>
+        <!-- TikTok script loads video player -->
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+    </section>
+
+    <!-- =======================
+         CATEGORIES SECTION
+    ======================== -->
+    <section class="categories">
+      <h3>Explore Our Categories</h3>
+      <div class="category-grid">
+        <!-- Each box links to a product category in products page -->
+        <a href="4-products.html#beauty" class="category-box">Nails & Beauty Products</a>
+        <a href="4-products.html#fragrances" class="category-box">Fragrances</a>
+        <a href="4-products.html#toys" class="category-box">Toys & Party Packs</a>
+        <a href="4-products.html#toiletry" class="category-box">Toiletry</a>
+        <a href="4-products.html#electronics" class="category-box">Electronics Gadgets & Watches</a>
+        <a href="4-products.html#clothing" class="category-box">Clothing & Other Accessories</a>
+        <a href="4-products.html#kitchen" class="category-box">Kitchen Stationary</a>
+        <a href="4-products.html#hair" class="category-box">Hair Products & Accessories</a>
+        <a href="4-products.html#chains" class="category-box">Chains & Necklaces</a>
+      </div>
+    </section>
+
+    <!-- =======================
+         FEATURED PRODUCTS
+    ======================== -->
+    <section class="featured-products">
+      <h3>Featured Products</h3>
+      <div class="product-grid">
+        <!-- Product Card 1 -->
+        <div class="product-card">
+          <img src="images/black_chic.jpg" alt="Hair Food Black Chic">
+          <h4>Hair Food (Black Chic)</h4>
+          <p>R25 - Nourishing and natural hair food.</p>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div class="product-card">
+          <img src="images/gel_polish.jpg" alt="Gel Polish">
+          <h4>Gel Polish</h4>
+          <p>R20 - Long-lasting, chip-free gel manicure.</p>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div class="product-card">
+          <img src="images/wireless_charger.jpg" alt="3-in-1 Charging Station">
+          <h4>3-in-1 Wireless iPhone Charger</h4>
+          <p>R180 - Charge your phone, watch & AirPods simultaneously.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =======================
+       FOOTER
+  ======================== -->
+  <footer>
+    <p>&copy; 2025 Mzansi Zone | All Rights Reserved</p>
+  </footer>
+  
+</body>
+</html>

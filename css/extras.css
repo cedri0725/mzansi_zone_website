@@ -1,0 +1,247 @@
+/* ============================
+   HOME VIDEO SECTION (TikTok)
+   Styles for embedding TikTok video nicely centered
+============================ */
+.home-video {
+  margin: 40px auto;            /* Add vertical spacing */
+  text-align: center;           /* Center-align text */
+}
+
+.video-wrapper {
+  display: flex;                /* Use flexbox for centering */
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 700px;             /* Restrict max width */
+}
+
+.tiktok-embed {
+  width: 100% !important;       /* Make video responsive */
+  border-radius: 12px;          /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Drop shadow */
+}
+
+/* ============================
+   SOCIAL ICONS - STYLED CIRCLES
+   Circle-shaped icons for WhatsApp, Facebook & TikTok
+============================ */
+.social-icons {
+  display: flex;                /* Arrange icons in a row */
+  gap: 15px;                    /* Space between icons */
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.social-icons a {
+  display: flex;                /* Center icon inside circle */
+  justify-content: center;
+  align-items: center;
+  width: 50px;                  /* Circle width */
+  height: 50px;                 /* Circle height */
+  border-radius: 50%;           /* Make perfect circle */
+  color: white;                 /* Icon color */
+  font-size: 24px;              /* Icon size */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+/* WhatsApp styling */
+.social-icons a[aria-label="WhatsApp"] {
+  background: #25D366;          /* WhatsApp green */
+}
+.social-icons a[aria-label="WhatsApp"]:hover {
+  transform: scale(1.2);        /* Grow on hover */
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.6); /* Green glow */
+}
+
+/* Facebook styling */
+.social-icons a[aria-label="Facebook"] {
+  background: #1877F2;          /* Facebook blue */
+}
+.social-icons a[aria-label="Facebook"]:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.6); /* Blue glow */
+}
+
+/* TikTok styling */
+.social-icons a[aria-label="TikTok"] {
+  background: #000000;          /* TikTok black */
+}
+.social-icons a[aria-label="TikTok"]:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* Black glow */
+}
+
+/* ============================
+   WELCOME PAGE ANIMATIONS
+   Typing effect for welcome page intro
+============================ */
+body.welcome {
+  background: black;
+  color: white;
+  height: 100vh;                /* Full screen height */
+  display: flex;                /* Center content */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.intro-container {
+  max-width: 800px;             /* Optional: limit width */
+  padding: 20px;
+}
+.typing {
+  color: green;                 
+  font-size: 3rem;              
+  border-right: 4px solid green; /* Simulates cursor */
+  overflow: hidden;              /* Hide text until typed */
+  white-space: nowrap;           /* Prevent line breaks */
+  animation: typing 3s steps(30,end) forwards, /* Typing effect */
+             blink 0.7s infinite step-end;     /* Cursor blink */
+}
+
+/* Typing effect expands width gradually */
+@keyframes typing { 
+  from {width:0;} 
+  to {width:22ch;}              /* Type 22 characters */
+}
+/* Cursor blink animation */
+@keyframes blink { 
+  50% {border-color: transparent;} 
+}
+
+/* ============================
+   HORIZONTAL SWIPE PRODUCTS
+   Allows horizontal product scroll (like a carousel)
+============================ */
+.product-swipe-container {
+  display: flex;
+  overflow-x: auto;              /* Scrollable horizontally */
+  scroll-snap-type: x mandatory; /* Snap effect */
+  gap: 20px;
+  padding: 20px 0;
+  -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+}
+
+/* Hide scrollbar on WebKit browsers */
+.product-swipe-container::-webkit-scrollbar { 
+  display: none; 
+}
+
+/* Hover effect for products */
+.product-card:hover {
+  transform: scale(1.1);         /* Slight zoom */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Shadow effect */
+}
+
+/* ============================
+   RESPONSIVE FIXES
+   Adjust layout for smaller screens
+============================ */
+@media(max-width:600px){
+  nav ul { flex-direction: column; }   /* Stack nav links vertically */
+  .category-grid { grid-template-columns: 1fr; } /* Single-column categories */
+  .product-grid { grid-template-columns: 1fr; }  /* Single-column products */
+}
+
+/* ============================
+   TEAM SECTION
+   Flip cards for team members
+============================ */
+.team {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.team h3 {
+  margin-bottom: 20px;
+  color: green;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  justify-items: center;        /* Center cards in each column */
+}
+
+.team-card {
+  width: 150px;
+  height: 200px;
+  perspective: 1000px;          /* Enable 3D flip effect */
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;   /* Smooth flipping */
+  transform-style: preserve-3d; /* Preserve 3D effect */
+}
+
+/* Flip the card on hover */
+.team-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Shared styles for card front & back */
+.card-front, 
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;  /* Hide back when front is shown */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Front of the card */
+.card-front {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Team member image */
+.card-front img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;             /* Crop image nicely */
+  border-bottom: 3px solid transparent; /* Default border */
+}
+
+/* Team member name */
+.card-front .name {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Back of the card */
+.card-back {
+  background: #f0f0f0;
+  transform: rotateY(180deg);    /* Hidden until flip */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+/* Hover Highlight Colors with Glow */
+
+/* Owner card highlight (blue) */
+.team-card.owner:hover .card-front img {
+  border-color: blue;
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.6);
+}
+
+/* Staff card highlight (green) */
+.team-card.staff:hover .card-front img {
+  border-color: green;
+  box-shadow: 0 0 15px rgba(0, 128, 0, 0.6);
+}

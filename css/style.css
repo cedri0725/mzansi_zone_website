@@ -1,0 +1,217 @@
+/* ============================
+   GLOBAL STYLES
+   Base styles applied across the whole site
+============================ */
+body {
+  font-family: 'Open Sans', Arial, sans-serif; /* Set font */
+  margin: 0;
+  padding: 0;
+  background: #fff;   /* White background */
+  color: #000;        /* Default text color */
+}
+
+header {
+  background: #000;   /* Black header background */
+  color: #fff;        /* White text inside header */
+  padding: 15px 0;    /* Vertical spacing */
+  text-align: center; /* Center logo & nav */
+}
+
+header .logo-header {
+  width: 150px;       /* Fixed logo width */
+}
+
+/* ============================
+   NAVIGATION BAR
+============================ */
+nav ul {
+  list-style: none;      /* Remove bullets */
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;         /* Align items horizontally */
+  justify-content: center;
+  gap: 15px;             /* Space between links */
+}
+
+nav ul li a {
+  color: grey;           /* Default link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
+  padding: 5px 10px;     /* Add clickable padding */
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+/* Hover effect for links */
+nav ul li a:hover {
+  background: #d4f0d4;   /* Light green background */
+  color: black;          /* Text turns black */
+}
+
+/* Active (selected) nav link */
+nav ul li a.active {
+  background: green;
+  color: white;
+}
+
+/* ============================
+   MAIN CONTENT AREA
+============================ */
+main {
+  padding: 20px;
+  max-width: 1000px;     /* Limit line length for readability */
+  margin: auto;          /* Center content */
+  text-align: center;
+}
+
+h2 {
+  color: green;          /* Section headings green */
+  margin-bottom: 15px;
+}
+
+/* ============================
+   CATEGORY GRID (Boxes for sections)
+============================ */
+.category-grid {
+  display: grid;                                /* CSS Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;                                    /* Space between boxes */
+  margin-top: 20px;
+}
+
+.category-box {
+  display: block;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;                        /* Remove underline */
+  transition: all 0.3s ease;                    /* Smooth hover animations */
+}
+
+/* Hover effect for category boxes */
+.category-box:hover {
+  background: #f0fff0;                          /* Light green tint */
+  color: green;
+  transform: translateY(-5px);                  /* Lift upwards */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);        /* Add shadow */
+}
+
+/* ============================
+   PRODUCT GRID (Products page)
+============================ */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 20px;
+}
+
+.product-card {
+  background: #f9f9f9;         /* Light background for product */
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;                 /* Full width inside card */
+  height: auto;
+  object-fit: cover;           /* Crop image proportionally */
+  aspect-ratio: 4/5;           /* Consistent image shape */
+  border-radius: 5px;
+}
+
+.product-card h4 {
+  color: green;                /* Product name green */
+  margin: 10px 0 5px;
+}
+
+.product-card p {
+  font-size: 0.95rem;          /* Slightly smaller text */
+  color: #333;
+}
+
+/* ============================
+   FORMS (Contact / Enquiry)
+============================ */
+form {
+  display: flex;
+  flex-direction: column;  /* Stack fields vertically */
+  gap: 10px;
+  max-width: 500px;        /* Limit width */
+  margin: auto;            /* Center form */
+}
+
+input, textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background: green;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: darkgreen;   /* Darker shade on hover */
+}
+
+/* ============================
+   CATEGORY NAVIGATION (Products Page)
+   Extra navigation bar above products
+============================ */
+.category-nav {
+  background: #f2f2f2;     /* Light grey bar */
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+  margin: 25px 0;          /* Space around nav */
+}
+
+.category-nav a {
+  display: inline-block;
+  margin: 6px;
+  padding: 8px 14px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  border: 1px solid #999;
+  border-radius: 5px;
+  background: #e6e6e6;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+/* Hover effect for category nav */
+.category-nav a:hover {
+  background: #ccc;
+  color: #000;
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* Active category nav item */
+.category-nav a.active {
+  background: green;
+  color: white;
+  border-color: #222;
+}
+
+/* ============================
+   FOOTER
+============================ */
+footer {
+  background: #000;   /* Black footer background */
+  color: white;
+  padding: 20px 10px;
+  text-align: center;
+}
